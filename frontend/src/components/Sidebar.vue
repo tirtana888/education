@@ -74,11 +74,11 @@ import { portalStore } from '@/stores/portal'
 import Button from 'frappe-ui/src/components/Button.vue'
 
 const links = [
-  // {
-  // 	label: 'Dashboard',
-  // 	to: '/',
-  // 	icon: LayoutDashboard,
-  // },
+  {
+    label: 'Dashboard',
+    to: '/',
+    icon: LayoutDashboard,
+  },
   {
     label: 'Schedule',
     to: '/schedule',

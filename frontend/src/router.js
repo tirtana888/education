@@ -5,7 +5,11 @@ import { studentStore } from '@/stores/student'
 import { portalStore } from '@/stores/portal'
 
 const routes = [
-  { path: '/', redirect: '/schedule' },
+  {
+    path: '/',
+    name: 'Dashboard',
+    component: () => import('@/pages/Home.vue'),
+  },
   {
     path: '/students',
     name: 'Students',
@@ -33,7 +37,7 @@ const routes = [
   },
   {
     path: '/:catchAll(.*)',
-    redirect: '/schedule',
+    redirect: '/',
   },
 ]
 
@@ -73,7 +77,7 @@ router.beforeEach(async (to) => {
 
   // The cards landing page is guardian-only.
   if (!portal.isGuardian && to.path === '/students') {
-    return '/schedule'
+    return '/'
   }
 
   await student.loadStudent()
