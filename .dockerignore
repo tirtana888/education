@@ -1,0 +1,9 @@
+.git
+.github
+.railway
+mariadb
+redis
+education_temp
+*.pyc
+__pycache__
+.env
