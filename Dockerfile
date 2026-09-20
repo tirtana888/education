@@ -7,14 +7,8 @@ RUN apt-get update \
 
 USER frappe
 WORKDIR /home/frappe/frappe-bench
-
-# Copy the forked education app repository into apps/education
-COPY --chown=frappe:frappe . /home/frappe/frappe-bench/apps/education
-
-# Install the education app and compile its assets
-RUN ./env/bin/pip install -e ./apps/education \
-    && echo "education" >> sites/apps.txt \
-    && bench build --app education \
+RUN bench get-app --branch version-16 https://github.com/tirtana888/education \
+    && bench build \
     && rm -rf /home/frappe/frappe-bench/assets \
     && cp -r /home/frappe/frappe-bench/sites/assets /home/frappe/frappe-bench/assets
 
